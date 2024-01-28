@@ -1,5 +1,3 @@
-import fs from 'fs-extra';
-
 const confirmPopupSelector = '.fc-primary-button';
 
 const emailSelector = '#log_email';
@@ -27,8 +25,6 @@ async function logIn(page, name, password) {
 
     await page.waitForSelector(startSessionSelector);
     await page.click(startSessionSelector);
-
-    await page.screenshot({ path: './screenshots/screenshot.jpg' });
   } catch (error) {
     console.log(error);
   }
