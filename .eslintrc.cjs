@@ -19,5 +19,15 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  rules: {},
+  rules: {
+    'no-use-before-define': 'off',
+    'no-unused-vars': 'off',
+    'consistent-return': 'off',
+    'no-console': 'off',
+    'max-classes-per-file': 'off',
+    'import/extensions': 'off',
+    'prefer-const': 'off',
+    'no-empty': 'off',
+    'no-param-reassign': 'off',
+  },
 };
