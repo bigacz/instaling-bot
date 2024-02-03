@@ -29,5 +29,6 @@ module.exports = {
     'prefer-const': 'off',
     'no-empty': 'off',
     'no-param-reassign': 'off',
+    'no-await-in-loop': 'off',
   },
 };

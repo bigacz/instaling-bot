@@ -1,3 +1,5 @@
+import isVisible from './isVisible.js';
+
 const confirmPopupSelector = '.fc-primary-button';
 
 const emailSelector = '#log_email';
@@ -6,8 +8,9 @@ const submitSelector = 'button[type="submit"]';
 
 const sessionSelector = '.btn-session';
 
-// this breaks sometimes
-const startSessionSelector = '#continue_session_button';
+// changes on new session
+const startSessionSelector = '#start_session_button';
+const continueSessionSelector = '#continue_session_button';
 
 async function logIn(page, name, password) {
   try {
@@ -23,8 +26,15 @@ async function logIn(page, name, password) {
     await page.waitForSelector(sessionSelector);
     await page.click(sessionSelector);
 
-    await page.waitForSelector(startSessionSelector);
-    await page.click(startSessionSelector);
+    await page.waitForTimeout(500);
+
+    const isStartVisible = await isVisible(startSessionSelector, page);
+
+    if (isStartVisible) {
+      await page.click(startSessionSelector);
+    } else {
+      await page.click(continueSessionSelector);
+    }
   } catch (error) {
     console.log(error);
   }

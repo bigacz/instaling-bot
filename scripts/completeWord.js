@@ -33,12 +33,12 @@ async function completeWord(page) {
 
     const correct = await page.$eval(translatedSelector, (e) => e.textContent);
 
-    if (correct) {
+    if (correct.length > 0) {
       // can be improved to read if the word exists, for preventing errors
       storage.push([untranslated, correct]);
+      await fs.writeJSON('./data/words.json', storage);
+      // i think it works i changed it after commenting in index.js at 5am
     }
-
-    await fs.writeJSON('./data/words.json', storage);
   }
 
   // needs improving

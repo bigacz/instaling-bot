@@ -6,3 +6,5 @@ const name = logins[0][0];
 const password = logins[0][1];
 
 doSession(name, password);
+
+// UNEXPECTED END OF JSON input completeWord.js 3:17
