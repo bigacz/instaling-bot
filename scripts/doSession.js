@@ -1,8 +1,8 @@
 import puppeteer from 'puppeteer';
 import logIn from './logIn.js';
 import completeWord from './completeWord.js';
-import isEnd from './isEnd.js';
 import isVisible from './isVisible.js';
+import removePopup from './removePopup.js';
 
 const pageLink = 'https://instaling.pl/teacher.php?page=login';
 const endSessionSelector = '#return_mainpage';
@@ -20,6 +20,10 @@ async function doSession(name, password) {
 
   let isEndVisible;
   while (!isEndVisible) {
+    await removePopup(page);
+
+    await page.waitForTimeout(50);
+
     await completeWord(page);
 
     await page.waitForTimeout(50);
