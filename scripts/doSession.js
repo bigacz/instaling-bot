@@ -9,8 +9,8 @@ const endSessionSelector = '#return_mainpage';
 
 async function doSession(name, password) {
   // TESTS
-  const browser = await puppeteer.launch({ headless: 'new' });
-  // const browser = await puppeteer.launch({ headless: false, slowMo: 50 });
+  // const browser = await puppeteer.launch({ headless: 'new' });
+  const browser = await puppeteer.launch({ headless: false, slowMo: 50 });
   // const browser = await puppeteer.launch({ headless: false });
 
   const page = await browser.newPage();
@@ -28,6 +28,8 @@ async function doSession(name, password) {
   }
 
   await browser.close();
+
+  console.log(`Session for ${name} completed!`);
 }
 
 export default doSession;

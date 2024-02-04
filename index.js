@@ -2,9 +2,14 @@ import fs from 'fs-extra';
 import doSession from './scripts/doSession.js';
 
 const logins = await fs.readJSON('./data/logins.json');
-const name = logins[0][0];
-const password = logins[0][1];
 
-doSession(name, password);
+// logins.forEach(async ([name, password]) => {
+//   await doSession(name, password);
+// });
 
-// UNEXPECTED END OF JSON input completeWord.js 3:17
+for (let i = 0; i < logins.length; i += 1) {
+  const name = logins[i][0];
+  const password = logins[i][1];
+
+  await doSession(name, password);
+}
