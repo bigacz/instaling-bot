@@ -24,7 +24,12 @@ async function doSession(name, password) {
 
     await page.waitForTimeout(100);
 
-    await completeWord(page);
+    try {
+      await completeWord(page);
+    } catch (error) {
+      await browser.close();
+      return false;
+    }
 
     await page.waitForTimeout(100);
 
@@ -34,6 +39,7 @@ async function doSession(name, password) {
   await browser.close();
 
   console.log(`Session for ${name} completed!`);
+  return true;
 }
 
 export default doSession;

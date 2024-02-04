@@ -7,5 +7,8 @@ for (let i = 0; i < logins.length; i += 1) {
   const name = logins[i][0];
   const password = logins[i][1];
 
-  await doSession(name, password);
+  let isSessionDone = false;
+  while (isSessionDone !== true) {
+    isSessionDone = await doSession(name, password);
+  }
 }

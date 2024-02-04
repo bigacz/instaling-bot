@@ -38,7 +38,6 @@ async function completeWord(page) {
 
     // needs improving
     await page.waitForTimeout(100);
-    //
 
     const correct = await page.$eval(translatedSelector, (e) => e.textContent);
 
