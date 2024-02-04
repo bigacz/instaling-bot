@@ -14,11 +14,11 @@ async function removePopup(page) {
     await page.click(skipSelector);
   }
 
-  await page.waitForTimeout(100);
+  await page.waitForTimeout(200);
 
   const isStillVisible = await isVisible(knowButtonSelector, page);
   if (isStillVisible) {
-    removePopup(page);
+    await removePopup(page);
   }
 }
 

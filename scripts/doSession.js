@@ -10,8 +10,8 @@ const endSessionSelector = '#return_mainpage';
 async function doSession(name, password) {
   // TESTS
   // const browser = await puppeteer.launch({ headless: 'new' });
-  const browser = await puppeteer.launch({ headless: false, slowMo: 50 });
-  // const browser = await puppeteer.launch({ headless: false });
+  // const browser = await puppeteer.launch({ headless: false, slowMo: 20 });
+  const browser = await puppeteer.launch({ headless: false });
 
   const page = await browser.newPage();
   await page.goto(pageLink);
@@ -22,11 +22,11 @@ async function doSession(name, password) {
   while (!isEndVisible) {
     await removePopup(page);
 
-    await page.waitForTimeout(50);
+    await page.waitForTimeout(100);
 
     await completeWord(page);
 
-    await page.waitForTimeout(50);
+    await page.waitForTimeout(100);
 
     isEndVisible = await isVisible(endSessionSelector, page);
   }

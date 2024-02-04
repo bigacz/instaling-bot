@@ -26,7 +26,7 @@ async function completeWord(page) {
     (element) => element[0] === untranslated && element[1] === example
   );
 
-  await page.waitForTimeout(100);
+  await page.waitForTimeout(200);
 
   if (translations !== undefined) {
     // TODO improve
@@ -51,7 +51,7 @@ async function completeWord(page) {
   }
 
   // needs improving
-  await page.waitForTimeout(100);
+  await page.waitForTimeout(200);
   //
   await page.click(nextWordSelector);
 }
