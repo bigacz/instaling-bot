@@ -3,10 +3,6 @@ import doSession from './scripts/doSession.js';
 
 const logins = await fs.readJSON('./data/logins.json');
 
-// logins.forEach(async ([name, password]) => {
-//   await doSession(name, password);
-// });
-
 for (let i = 0; i < logins.length; i += 1) {
   const name = logins[i][0];
   const password = logins[i][1];
